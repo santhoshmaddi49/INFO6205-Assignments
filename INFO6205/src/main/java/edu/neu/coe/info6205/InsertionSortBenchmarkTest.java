@@ -77,8 +77,6 @@ public class InsertionSortBenchmarkTest {
 
     public static void main(String[] args) {
 
-
-
         for(int N =1000; N<=16000; N = N*2) {
 
             int finalN = N;
@@ -86,17 +84,18 @@ public class InsertionSortBenchmarkTest {
             Supplier<Integer[]> supplier = () -> createSortedArray(finalN);
             runBenchmarkTest(N, description, supplier);
 
-            description = "Insertion sort for reversely sorted array of size: " + N;
-            supplier = () -> createReverseSortedArray(finalN);
+            description = "Insertion sort for partially sorted array of size: " + N;
+            supplier = () -> createPartiallySortedArray(finalN);
             runBenchmarkTest(N, description, supplier);
 
             description = "Insertion sort for random numbers in a array of size: " + N;
             supplier = () -> createRandomArray(finalN);
             runBenchmarkTest(N, description, supplier);
 
-            description = "Insertion sort for partially sorted array of size: " + N;
-            supplier = () -> createPartiallySortedArray(finalN);
+            description = "Insertion sort for reversely sorted array of size: " + N;
+            supplier = () -> createReverseSortedArray(finalN);
             runBenchmarkTest(N, description, supplier);
+
         }
 
     }
